@@ -1,0 +1,1099 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ACM – Acutis Martech | Automação e IA B2B</title>
+  <meta name="description" content="Automação de processos e agentes de IA B2B. Plano personalizado e 15 dias de teste grátis." />
+
+  <!-- Tailwind CSS (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Remix Icon (ícones) -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet"/>
+
+  <style>
+    /* ====== Animações personalizadas ====== */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(var(--rotation, 0deg)); }
+      50% { transform: translateY(-10px) rotate(var(--rotation, 0deg)); }
+    }
+    @keyframes fade-in-up {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fade-in {
+      from { opacity: 0; transform: translateY(10px) translateX(-50%); }
+      to { opacity: 1; transform: translateY(0) translateX(-50%); }
+    }
+    .animate-float { animation: float 6s ease-in-out infinite; }
+    .animate-fade-in-up { animation: fade-in-up 0.8s ease-out forwards; }
+
+    /* Delays utilitárias */
+    .animation-delay-100 { animation-delay: 0.1s; }
+    .animation-delay-200 { animation-delay: 0.2s; }
+    .animation-delay-300 { animation-delay: 0.3s; }
+    .animation-delay-400 { animation-delay: 0.4s; }
+    .animation-delay-500 { animation-delay: 0.5s; }
+    .animation-delay-1000 { animation-delay: 1s; }
+    .animation-delay-2000 { animation-delay: 2s; }
+    .animation-delay-3000 { animation-delay: 3s; }
+    .animation-delay-4000 { animation-delay: 4s; }
+
+    /* Pequenos helpers de transição */
+    .delay-100 { transition-delay: 0.1s; }
+    .delay-200 { transition-delay: 0.2s; }
+    .delay-300 { transition-delay: 0.3s; }
+
+    /* Offcanvas mobile */
+    .mobile-drawer {
+      transform: translateX(100%);
+      transition: transform .25s ease;
+    }
+    .mobile-drawer.open {
+      transform: translateX(0);
+    }
+  </style>
+</head>
+
+<body class="antialiased text-gray-900">
+  <div id="root">
+    <div class="min-h-screen bg-white">
+
+      <!-- Navbar -->
+      <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex justify-between items-center h-16">
+            <div class="flex items-center">
+              <div class="flex items-center space-x-3">
+                <h1 class="text-xl font-black text-gray-900 mb-4">ACM - Acutis Martech</h1>
+                <!-- Substituir por sua LOGO quando enviar 
+                <img alt="ACM - Acutis Martech" class="h-10 w-auto"
+                     src="https://static.readdy.ai/image/180e772001476926f8b30b4092cd5ab5/7481d594ac4d71303f01a3199ed5576c.png">
+                -->
+                    </div>
+            </div>
+
+            <div class="hidden lg:flex items-center space-x-8">
+              <a href="#solucoes" class="text-gray-600 hover:text-gray-900 font-medium transition-colors">Soluções</a>
+              <a href="#recursos" class="text-gray-600 hover:text-gray-900 font-medium transition-colors">Recursos</a>
+              <a href="#faq" class="text-gray-600 hover:text-gray-900 font-medium transition-colors">FAQ</a>
+              <a href="#contato" class="text-gray-600 hover:text-gray-900 font-medium transition-colors">Contato</a>
+            </div>
+
+            <!-- Botão mobile -->
+            <div class="lg:hidden">
+              <button id="btn-mobile-menu" class="text-gray-600 hover:text-gray-900 focus:outline-none" aria-label="Menu">
+                <i class="ri-menu-line text-2xl"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Drawer Mobile -->
+      <aside id="mobile-drawer"
+             class="mobile-drawer fixed inset-y-0 right-0 w-72 bg-white shadow-2xl border-l border-gray-100 z-50 p-6">
+        <div class="flex items-center justify-between mb-6">
+          <span class="font-semibold">Menu</span>
+          <button id="btn-close-drawer" class="text-gray-500 hover:text-gray-800" aria-label="Fechar menu">
+            <i class="ri-close-line text-2xl"></i>
+          </button>
+        </div>
+        <nav class="space-y-4">
+          <a href="#solucoes" class="block text-gray-700 hover:text-gray-900">Soluções</a>
+          <a href="#recursos" class="block text-gray-700 hover:text-gray-900">Recursos</a>
+          <a href="#faq" class="block text-gray-700 hover:text-gray-900">FAQ</a>
+          <a href="#contato" class="block text-gray-700 hover:text-gray-900">Contato</a>
+        </nav>
+      </aside>
+
+      <!-- HERO -->
+      <section class="relative min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 overflow-hidden">
+        <!-- blobs -->
+        <div class="absolute inset-0">
+          <div class="absolute top-20 left-10 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply blur-xl opacity-30 animate-pulse"></div>
+          <div class="absolute top-40 right-10 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply blur-xl opacity-30 animate-pulse animation-delay-2000"></div>
+          <div class="absolute -bottom-8 left-20 w-72 h-72 bg-pink-200 rounded-full mix-blend-multiply blur-xl opacity-30 animate-pulse animation-delay-4000"></div>
+        </div>
+        <!-- decor -->
+        <div class="absolute inset-0 overflow-hidden">
+          <div class="absolute top-1/4 left-1/4 w-4 h-4 bg-blue-400 rounded-full animate-bounce animation-delay-1000"></div>
+          <div class="absolute top-1/3 right-1/4 w-6 h-6 bg-purple-400 rotate-45 animate-pulse animation-delay-2000"></div>
+          <div class="absolute bottom-1/4 left-1/3 w-3 h-3 bg-pink-400 rounded-full animate-bounce animation-delay-3000"></div>
+          <div class="absolute top-1/2 right-1/3 w-5 h-5 bg-indigo-400 rotate-45 animate-pulse animation-delay-4000"></div>
+        </div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20">
+          <div class="text-center">
+            <h1 class="text-5xl md:text-7xl font-bold text-gray-900 mb-8 leading-tight">
+              <span class="inline-block animate-fade-in-up">Automação e IA para</span><br>
+              <span class="inline-block animate-fade-in-up animation-delay-500 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                eliminar tarefas repetitivas
+              </span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-600 mb-12 max-w-4xl mx-auto">
+              A ACM – Acutis Martech cria um plano personalizado para sua empresa e oferece 15 dias de teste grátis.
+            </p>
+            <div>
+              <a href="#newsletter-form"
+                 class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-full text-lg hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition-all shadow-lg">
+                <i class="ri-rocket-line mr-3 text-xl"></i>Quero meu plano personalizado
+                <i class="ri-arrow-right-line ml-3 text-xl"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Cards flutuantes -->
+          <div class="relative mt-20">
+            <div class="absolute top-0 left-4 md:left-20 transform -rotate-6 hover:rotate-0 hover:scale-110 cursor-pointer transition-all">
+              <div class="bg-white p-6 rounded-3xl shadow-xl hover:shadow-2xl border border-blue-100 animate-float">
+                <div class="flex items-center space-x-3 mb-3">
+                  <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center animate-pulse">
+                    <i class="ri-robot-line text-white text-lg"></i>
+                  </div>
+                  <span class="text-lg font-semibold text-gray-800">Automação Ativa</span>
+                </div>
+                <p class="text-sm text-gray-600">47 tarefas automatizadas hoje</p>
+                <div class="mt-3 bg-green-100 rounded-full px-3 py-1 inline-block">
+                  <span class="text-xs text-green-700 font-medium">+340% produtividade</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="absolute top-10 right-4 md:right-20 transform rotate-3 hover:rotate-0 hover:scale-110 cursor-pointer transition-all">
+              <div class="bg-white p-6 rounded-3xl shadow-xl hover:shadow-2xl border border-purple-100 animate-float animation-delay-1000">
+                <div class="flex items-center space-x-3 mb-3">
+                  <div class="w-10 h-10 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full flex items-center justify-center animate-pulse">
+                    <i class="ri-brain-line text-white text-lg"></i>
+                  </div>
+                  <span class="text-lg font-semibold text-gray-800">Agente IA B2B</span>
+                </div>
+                <p class="text-sm text-gray-600">Analisando 23 leads</p>
+                <div class="mt-3 bg-purple-100 rounded-full px-3 py-1 inline-block">
+                  <span class="text-xs text-purple-700 font-medium">85% precisão</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="absolute bottom-20 left-4 md:left-16 transform -rotate-2 hover:rotate-0 hover:scale-110 cursor-pointer transition-all">
+              <div class="bg-white p-6 rounded-3xl shadow-xl hover:shadow-2xl border border-green-100 animate-float animation-delay-2000">
+                <h4 class="text-lg font-semibold text-gray-800 mb-3">Integrações Ativas</h4>
+                <div class="flex space-x-2 mb-3">
+                  <div class="w-8 h-8 bg-red-500 rounded-lg flex items-center justify-center animate-pulse">
+                    <i class="ri-mail-line text-white text-sm"></i>
+                  </div>
+                  <div class="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center animate-pulse animation-delay-500">
+                    <i class="ri-whatsapp-line text-white text-sm"></i>
+                  </div>
+                  <div class="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center animate-pulse animation-delay-1000">
+                    <i class="ri-calendar-line text-white text-sm"></i>
+                  </div>
+                </div>
+                <div class="bg-green-100 rounded-full px-3 py-1 inline-block">
+                  <span class="text-xs text-green-700 font-medium">12 apps conectados</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="absolute bottom-10 right-4 md:right-16 transform rotate-2 hover:rotate-0 hover:scale-110 cursor-pointer transition-all">
+              <div class="bg-white p-6 rounded-3xl shadow-xl hover:shadow-2xl border border-orange-100 animate-float animation-delay-3000">
+                <h4 class="text-lg font-semibold text-gray-800 mb-3">Métricas em Tempo Real</h4>
+                <div class="space-y-2">
+                  <div class="flex items-center justify-between">
+                    <span class="text-sm text-gray-600">Tempo economizado</span>
+                    <span class="text-sm font-semibold text-orange-600">8.5h hoje</span>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <span class="text-sm text-gray-600">Tarefas concluídas</span>
+                    <span class="text-sm font-semibold text-green-600">47/52</span>
+                  </div>
+                </div>
+                <div class="mt-3 w-full bg-gray-200 rounded-full h-2">
+                  <div class="bg-gradient-to-r from-orange-400 to-orange-500 h-2 rounded-full animate-pulse" style="width: 90%;"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Newsletter / Plano personalizado -->
+      <section id="newsletter-form" class="py-24 bg-gradient-to-br from-blue-600 to-purple-700">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="bg-white rounded-3xl shadow-2xl p-8 md:p-12">
+            <div class="text-center mb-8">
+              <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Receba seu plano e ative 15 dias grátis</h2>
+              <p class="text-lg text-gray-600">Preencha os dados abaixo e nossa equipe entrará em contato para criar seu plano personalizado</p>
+            </div>
+
+            <form id="plano-personalizado-acm" class="space-y-6">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">E-mail *</label>
+                  <input id="email" name="email" type="email" required autocomplete="email"
+                         class="w-full px-4 py-3 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-sm"
+                         placeholder="seu@email.com">
+                </div>
+                <div>
+                  <label for="company" class="block text-sm font-semibold text-gray-700 mb-2">Nome da empresa *</label>
+                  <input id="company" name="company" type="text" required autocomplete="organization"
+                         class="w-full px-4 py-3 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-sm"
+                         placeholder="Sua Empresa Ltda">
+                </div>
+              </div>
+
+              <div>
+                <label for="phone" class="block text-sm font-semibold text-gray-700 mb-2">Telefone de contato *</label>
+                  <input id="phone"
+                    type="tel" required autocomplete="tel" inputmode="numeric" maxlength="16"
+                    pattern="^\(\d{2}\)\s\d{4,5}-\d{4}$"
+                    placeholder="(11) 99999-9999" name="phone">
+
+              </div>
+
+              <div class="flex items-start space-x-3">
+                <input id="whatsapp" name="whatsapp" type="checkbox"
+                       class="mt-1 w-5 h-5 text-green-600 border-gray-300 rounded focus:ring-green-500">
+                <label for="whatsapp" class="text-sm text-gray-600 leading-relaxed">
+                  <i class="ri-whatsapp-line text-green-500 mr-1"></i>Este número é WhatsApp (opcional)
+                </label>
+              </div>
+
+              <div class="flex items-start space-x-3">
+                <input id="lgpd" name="lgpd" type="checkbox" required
+                       class="mt-1 w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                <label for="lgpd" class="text-sm text-gray-600 leading-relaxed">
+                  Autorizo contato por e-mail e telefone sobre soluções da ACM – Acutis Martech. Posso cancelar a qualquer momento conforme nossa política de privacidade.
+                </label>
+              </div>
+
+              <div class="text-center">
+                <button type="submit"
+                        class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-2xl hover:from-blue-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all shadow-lg text-lg">
+                  <i class="ri-user-voice-line mr-2"></i>Enviar e falar com especialista
+                </button>
+              </div>
+            </form>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Como ajudamos -->
+      <section id="solucoes" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-20">
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Como ajudamos sua empresa</h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">Soluções completas de automação e IA para transformar a produtividade do seu negócio</p>
+          </div>
+
+          <div id="recursos" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Cards (4) -->
+            <div class="group relative p-8 rounded-3xl transition-all cursor-pointer hover:-translate-y-4 hover:shadow-2xl bg-blue-50 hover:bg-white border border-transparent hover:border-gray-100">
+              <div class="relative w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+                <i class="ri-robot-line text-2xl text-white"></i>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-4">Automação de processos</h3>
+              <p class="text-gray-600 mb-6">Robôs inteligentes para eliminar tarefas repetitivas e aumentar a produtividade da sua equipe.</p>
+              <ul class="space-y-2 mb-6 text-sm text-gray-600">
+                <li class="flex items-center"><span class="w-2 h-2 bg-blue-600 rounded-full mr-3"></span>Fluxos personalizados</li>
+                <li class="flex items-center"><span class="w-2 h-2 bg-blue-600 rounded-full mr-3"></span>Integração com sistemas</li>
+                <li class="flex items-center"><span class="w-2 h-2 bg-blue-600 rounded-full mr-3"></span>Monitoramento 24/7</li>
+              </ul>
+              <a href="#newsletter-form" class="inline-flex items-center bg-gradient-to-r from-blue-500 to-blue-600 bg-clip-text text-transparent font-medium">
+                Saiba mais <i class="ri-arrow-right-line ml-2"></i>
+              </a>
+            </div>
+
+            <div class="group relative p-8 rounded-3xl transition-all cursor-pointer hover:-translate-y-4 hover:shadow-2xl bg-purple-50 hover:bg-white border border-transparent hover:border-gray-100">
+              <div class="relative w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+                <i class="ri-brain-line text-2xl text-white"></i>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-4">Agentes de IA B2B</h3>
+              <p class="text-gray-600 mb-6">Assistentes virtuais para atendimento, análise de dados e rotinas internas da empresa.</p>
+              <ul class="space-y-2 mb-6 text-sm text-gray-600">
+                <li class="flex items-center"><span class="w-2 h-2 bg-purple-600 rounded-full mr-3"></span>Atendimento automatizado</li>
+                <li class="flex items-center"><span class="w-2 h-2 bg-purple-600 rounded-full mr-3"></span>Análise preditiva</li>
+                <li class="flex items-center"><span class="w-2 h-2 bg-purple-600 rounded-full mr-3"></span>Relatórios inteligentes</li>
+              </ul>
+              <a href="#newsletter-form" class="inline-flex items-center bg-gradient-to-r from-purple-500 to-purple-600 bg-clip-text text-transparent font-medium">
+                Saiba mais <i class="ri-arrow-right-line ml-2"></i>
+              </a>
+            </div>
+
+            <div class="group relative p-8 rounded-3xl transition-all cursor-pointer hover:-translate-y-4 hover:shadow-2xl bg-green-50 hover:bg-white border border-transparent hover:border-gray-100">
+              <div class="relative w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+                <i class="ri-links-line text-2xl text-white"></i>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-4">Integrações rápidas</h3>
+              <p class="text-gray-600 mb-6">Conectores prontos e personalizados para unificar todas as suas ferramentas de trabalho.</p>
+              <ul class="space-y-2 mb-6 text-sm text-gray-600">
+                <li class="flex items-center"><span class="w-2 h-2 bg-green-600 rounded-full mr-3"></span>100+ integrações</li>
+                <li class="flex items-center"><span class="w-2 h-2 bg-green-600 rounded-full mr-3"></span>APIs customizadas</li>
+                <li class="flex items-center"><span class="w-2 h-2 bg-green-600 rounded-full mr-3"></span>Sincronização em tempo real</li>
+              </ul>
+              <a href="#newsletter-form" class="inline-flex items-center bg-gradient-to-r from-green-500 to-green-600 bg-clip-text text-transparent font-medium">
+                Saiba mais <i class="ri-arrow-right-line ml-2"></i>
+              </a>
+            </div>
+
+            <div class="group relative p-8 rounded-3xl transition-all cursor-pointer hover:-translate-y-4 hover:shadow-2xl bg-orange-50 hover:bg-white border border-transparent hover:border-gray-100">
+              <div class="relative w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+                <i class="ri-bar-chart-line text-2xl text-white"></i>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-4">Métricas & painéis</h3>
+              <p class="text-gray-600 mb-6">Dashboards personalizados para acompanhar o ganho de tempo e produtividade em tempo real.</p>
+              <ul class="space-y-2 mb-6 text-sm text-gray-600">
+                <li class="flex items-center"><span class="w-2 h-2 bg-orange-600 rounded-full mr-3"></span>Dashboards personalizados</li>
+                <li class="flex items-center"><span class="w-2 h-2 bg-orange-600 rounded-full mr-3"></span>Relatórios automáticos</li>
+                <li class="flex items-center"><span class="w-2 h-2 bg-orange-600 rounded-full mr-3"></span>KPIs em tempo real</li>
+              </ul>
+              <a href="#newsletter-form" class="inline-flex items-center bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent font-medium">
+                Saiba mais <i class="ri-arrow-right-line ml-2"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="mt-20 text-center">
+            <div class="inline-flex items-center space-x-4 bg-gradient-to-r from-blue-50 to-purple-50 px-8 py-4 rounded-full border border-blue-100">
+              <div class="flex space-x-1">
+                <div class="w-2 h-2 bg-blue-500 rounded-full animate-bounce"></div>
+                <div class="w-2 h-2 bg-purple-500 rounded-full animate-bounce animation-delay-200"></div>
+                <div class="w-2 h-2 bg-pink-500 rounded-full animate-bounce animation-delay-400"></div>
+              </div>
+              <span class="text-gray-700 font-medium">Transformando empresas desde 2025</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Integrações -->
+      <section class="py-20 bg-gradient-to-br from-gray-50 to-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Integre com suas ferramentas favoritas</h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">Conecte a ACM – Acutis Martech a 100+ apps e otimize seu fluxo de trabalho</p>
+          </div>
+
+          <!-- Grid de ícones requisitados + empresariais -->
+          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-6 justify-items-center">
+            <!-- WhatsApp -->
+            <div class="relative group flex flex-col items-center">
+              <div class="w-16 h-16 bg-white rounded-2xl shadow-lg border border-gray-100 flex items-center justify-center group-hover:scale-110 group-hover:-translate-y-2 transition">
+                <div class="w-10 h-10 bg-green-500 rounded-xl flex items-center justify-center">
+                  <i class="ri-whatsapp-line text-white text-xl"></i>
+                </div>
+              </div>
+              <span class="text-xs text-gray-600 mt-2 sm:hidden">WhatsApp</span>
+            </div>
+
+            <!-- Instagram -->
+            <div class="relative group flex flex-col items-center">
+              <div class="w-16 h-16 bg-white rounded-2xl shadow-lg border border-gray-100 flex items-center justify-center group-hover:scale-110 group-hover:-translate-y-2 transition">
+                <div class="w-10 h-10 bg-pink-500 rounded-xl flex items-center justify-center">
+                  <i class="ri-instagram-line text-white text-xl"></i>
+                </div>
+              </div>
+              <span class="text-xs text-gray-600 mt-2 sm:hidden">Instagram</span>
+            </div>
+
+            <!-- Facebook -->
+            <div class="relative group flex flex-col items-center">
+              <div class="w-16 h-16 bg-white rounded-2xl shadow-lg border border-gray-100 flex items-center justify-center group-hover:scale-110 group-hover:-translate-y-2 transition">
+                <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center">
+                  <i class="ri-facebook-line text-white text-xl"></i>
+                </div>
+              </div>
+              <span class="text-xs text-gray-600 mt-2 sm:hidden">Facebook</span>
+            </div>
+
+            <!-- Trello -->
+            <div class="relative group flex flex-col items-center">
+              <div class="w-16 h-16 bg-white rounded-2xl shadow-lg border border-gray-100 flex items-center justify-center group-hover:scale-110 group-hover:-translate-y-2 transition">
+                <div class="w-10 h-10 bg-blue-500 rounded-xl flex items-center justify-center">
+                  <i class="ri-trello-line text-white text-xl"></i>
+                </div>
+              </div>
+              <span class="text-xs text-gray-600 mt-2 sm:hidden">Trello</span>
+            </div>
+
+            <!-- Excel -->
+            <div class="relative group flex flex-col items-center">
+              <div class="w-16 h-16 bg-white rounded-2xl shadow-lg border border-gray-100 flex items-center justify-center group-hover:scale-110 group-hover:-translate-y-2 transition">
+                <div class="w-10 h-10 bg-green-600 rounded-xl flex items-center justify-center">
+                  <i class="ri-file-excel-line text-white text-xl"></i>
+                </div>
+              </div>
+              <span class="text-xs text-gray-600 mt-2 sm:hidden">Excel</span>
+            </div>
+
+            <!-- Google -->
+            <div class="relative group flex flex-col items-center">
+              <div class="w-16 h-16 bg-white rounded-2xl shadow-lg border border-gray-100 flex items-center justify-center group-hover:scale-110 group-hover:-translate-y-2 transition">
+                <div class="w-10 h-10 bg-red-500 rounded-xl flex items-center justify-center">
+                  <i class="ri-google-line text-white text-xl"></i>
+                </div>
+              </div>
+              <span class="text-xs text-gray-600 mt-2 sm:hidden">Google</span>
+            </div>
+
+            <!-- Notion -->
+            <div class="relative group flex flex-col items-center">
+              <div class="w-16 h-16 bg-white rounded-2xl shadow-lg border border-gray-100 flex items-center justify-center group-hover:scale-110 group-hover:-translate-y-2 transition">
+                <div class="w-10 h-10 bg-gray-800 rounded-xl flex items-center justify-center">
+                  <i class="ri-notion-line text-white text-xl"></i>
+                </div>
+              </div>
+              <span class="text-xs text-gray-600 mt-2 sm:hidden">Notion</span>
+            </div>
+
+            <!-- Slack -->
+            <div class="relative group flex flex-col items-center">
+              <div class="w-16 h-16 bg-white rounded-2xl shadow-lg border border-gray-100 flex items-center justify-center group-hover:scale-110 group-hover:-translate-y-2 transition">
+                <div class="w-10 h-10 bg-purple-500 rounded-xl flex items-center justify-center">
+                  <i class="ri-slack-line text-white text-xl"></i>
+                </div>
+              </div>
+              <span class="text-xs text-gray-600 mt-2 sm:hidden">Slack</span>
+            </div>
+
+            <!-- Gmail -->
+            <div class="relative group flex flex-col items-center">
+              <div class="w-16 h-16 bg-white rounded-2xl shadow-lg border border-gray-100 flex items-center justify-center group-hover:scale-110 group-hover:-translate-y-2 transition">
+                <div class="w-10 h-10 bg-red-500 rounded-xl flex items-center justify-center">
+                  <i class="ri-mail-line text-white text-xl"></i>
+                </div>
+              </div>
+              <span class="text-xs text-gray-600 mt-2 sm:hidden">Gmail</span>
+            </div>
+
+            <!-- Google Calendar -->
+            <div class="relative group flex flex-col items-center">
+              <div class="w-16 h-16 bg-white rounded-2xl shadow-lg border border-gray-100 flex items-center justify-center group-hover:scale-110 group-hover:-translate-y-2 transition">
+                <div class="w-10 h-10 bg-blue-500 rounded-xl flex items-center justify-center">
+                  <i class="ri-calendar-line text-white text-xl"></i>
+                </div>
+              </div>
+              <span class="text-xs text-gray-600 mt-2 sm:hidden">Google Calendar</span>
+            </div>
+
+            <!-- HubSpot -->
+            <div class="relative group flex flex-col items-center">
+              <div class="w-16 h-16 bg-white rounded-2xl shadow-lg border border-gray-100 flex items-center justify-center group-hover:scale-110 group-hover:-translate-y-2 transition">
+                <div class="w-10 h-10 bg-orange-500 rounded-xl flex items-center justify-center">
+                  <i class="ri-customer-service-line text-white text-xl"></i>
+                </div>
+              </div>
+              <span class="text-xs text-gray-600 mt-2 sm:hidden">HubSpot</span>
+            </div>
+
+            <!-- Salesforce -->
+            <div class="relative group flex flex-col items-center">
+              <div class="w-16 h-16 bg-white rounded-2xl shadow-lg border border-gray-100 flex items-center justify-center group-hover:scale-110 group-hover:-translate-y-2 transition">
+                <div class="w-10 h-10 bg-blue-400 rounded-xl flex items-center justify-center">
+                  <i class="ri-cloud-line text-white text-xl"></i>
+                </div>
+              </div>
+              <span class="text-xs text-gray-600 mt-2 sm:hidden">Salesforce</span>
+            </div>
+
+            <!-- Microsoft 365 -->
+            <div class="relative group flex flex-col items-center">
+              <div class="w-16 h-16 bg-white rounded-2xl shadow-lg border border-gray-100 flex items-center justify-center group-hover:scale-110 group-hover:-translate-y-2 transition">
+                <div class="w-10 h-10 bg-blue-700 rounded-xl flex items-center justify-center">
+                  <i class="ri-microsoft-line text-white text-xl"></i>
+                </div>
+              </div>
+              <span class="text-xs text-gray-600 mt-2 sm:hidden">Microsoft 365</span>
+            </div>
+
+            <!-- Zoom -->
+            <div class="relative group flex flex-col items-center">
+              <div class="w-16 h-16 bg-white rounded-2xl shadow-lg border border-gray-100 flex items-center justify-center group-hover:scale-110 group-hover:-translate-y-2 transition">
+                <div class="w-10 h-10 bg-blue-400 rounded-xl flex items-center justify-center">
+                  <i class="ri-vidicon-line text-white text-xl"></i>
+                </div>
+              </div>
+              <span class="text-xs text-gray-600 mt-2 sm:hidden">Zoom</span>
+            </div>
+
+            <!-- Teams -->
+            <div class="relative group flex flex-col items-center">
+              <div class="w-16 h-16 bg-white rounded-2xl shadow-lg border border-gray-100 flex items-center justify-center group-hover:scale-110 group-hover:-translate-y-2 transition">
+                <div class="w-10 h-10 bg-purple-600 rounded-xl flex items-center justify-center">
+                  <i class="ri-team-line text-white text-xl"></i>
+                </div>
+              </div>
+              <span class="text-xs text-gray-600 mt-2 sm:hidden">Teams</span>
+            </div>
+
+            <!-- Dropbox -->
+            <div class="relative group flex flex-col items-center">
+              <div class="w-16 h-16 bg-white rounded-2xl shadow-lg border border-gray-100 flex items-center justify-center group-hover:scale-110 group-hover:-translate-y-2 transition">
+                <div class="w-10 h-10 bg-blue-500 rounded-xl flex items-center justify-center">
+                  <i class="ri-dropbox-line text-white text-xl"></i>
+                </div>
+              </div>
+              <span class="text-xs text-gray-600 mt-2 sm:hidden">Dropbox</span>
+            </div>
+
+            <!-- OneDrive -->
+            <div class="relative group flex flex-col items-center">
+              <div class="w-16 h-16 bg-white rounded-2xl shadow-lg border border-gray-100 flex items-center justify-center group-hover:scale-110 group-hover:-translate-y-2 transition">
+                <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center">
+                  <i class="ri-cloud-line text-white text-xl"></i>
+                </div>
+              </div>
+              <span class="text-xs text-gray-600 mt-2 sm:hidden">OneDrive</span>
+            </div>
+
+            <!-- LinkedIn -->
+            <div class="relative group flex flex-col items-center">
+              <div class="w-16 h-16 bg-white rounded-2xl shadow-lg border border-gray-100 flex items-center justify-center group-hover:scale-110 group-hover:-translate-y-2 transition">
+                <div class="w-10 h-10 bg-blue-700 rounded-xl flex items-center justify-center">
+                  <i class="ri-linkedin-line text-white text-xl"></i>
+                </div>
+              </div>
+              <span class="text-xs text-gray-600 mt-2 sm:hidden">LinkedIn</span>
+            </div>
+
+            <!-- Twitter/X -->
+            <div class="relative group flex flex-col items-center">
+              <div class="w-16 h-16 bg-white rounded-2xl shadow-lg border border-gray-100 flex items-center justify-center group-hover:scale-110 group-hover:-translate-y-2 transition">
+                <div class="w-10 h-10 bg-blue-400 rounded-xl flex items-center justify-center">
+                  <i class="ri-twitter-line text-white text-xl"></i>
+                </div>
+              </div>
+              <span class="text-xs text-gray-600 mt-2 sm:hidden">Twitter</span>
+            </div>
+
+            <!-- YouTube -->
+            <div class="relative group flex flex-col items-center">
+              <div class="w-16 h-16 bg-white rounded-2xl shadow-lg border border-gray-100 flex items-center justify-center group-hover:scale-110 group-hover:-translate-y-2 transition">
+                <div class="w-10 h-10 bg-red-600 rounded-xl flex items-center justify-center">
+                  <i class="ri-youtube-line text-white text-xl"></i>
+                </div>
+              </div>
+              <span class="text-xs text-gray-600 mt-2 sm:hidden">YouTube</span>
+            </div>
+
+            <!-- Shopify -->
+            <div class="relative group flex flex-col items-center">
+              <div class="w-16 h-16 bg-white rounded-2xl shadow-lg border border-gray-100 flex items-center justify-center group-hover:scale-110 group-hover:-translate-y-2 transition">
+                <div class="w-10 h-10 bg-green-500 rounded-xl flex items-center justify-center">
+                  <i class="ri-shopping-bag-line text-white text-xl"></i>
+                </div>
+              </div>
+              <span class="text-xs text-gray-600 mt-2 sm:hidden">Shopify</span>
+            </div>
+
+            <!-- WooCommerce -->
+            <div class="relative group flex flex-col items-center">
+              <div class="w-16 h-16 bg-white rounded-2xl shadow-lg border border-gray-100 flex items-center justify-center group-hover:scale-110 group-hover:-translate-y-2 transition">
+                <div class="w-10 h-10 bg-purple-500 rounded-xl flex items-center justify-center">
+                  <i class="ri-store-line text-white text-xl"></i>
+                </div>
+              </div>
+              <span class="text-xs text-gray-600 mt-2 sm:hidden">WooCommerce</span>
+            </div>
+
+            <!-- Mailchimp -->
+            <div class="relative group flex flex-col items-center">
+              <div class="w-16 h-16 bg-white rounded-2xl shadow-lg border border-gray-100 flex items-center justify-center group-hover:scale-110 group-hover:-translate-y-2 transition">
+                <div class="w-10 h-10 bg-yellow-500 rounded-xl flex items-center justify-center">
+                  <i class="ri-mail-send-line text-white text-xl"></i>
+                </div>
+              </div>
+              <span class="text-xs text-gray-600 mt-2 sm:hidden">Mailchimp</span>
+            </div>
+
+            <!-- Zapier -->
+            <div class="relative group flex flex-col items-center">
+              <div class="w-16 h-16 bg-white rounded-2xl shadow-lg border border-gray-100 flex items-center justify-center group-hover:scale-110 group-hover:-translate-y-2 transition">
+                <div class="w-10 h-10 bg-orange-400 rounded-xl flex items-center justify-center">
+                  <i class="ri-flashlight-line text-white text-xl"></i>
+                </div>
+              </div>
+              <span class="text-xs text-gray-600 mt-2 sm:hidden">Zapier</span>
+            </div>
+          </div>
+
+          <div class="text-center mt-16">
+            <div class="inline-flex items-center space-x-2 bg-blue-50 px-6 py-3 rounded-full mb-6">
+              <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+              <span class="text-blue-700 font-medium">Conectando automaticamente</span>
+            </div>
+            <p class="text-gray-600 mb-8 text-lg">E muitas outras ferramentas empresariais disponíveis</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+              <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-100">
+                <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+                  <i class="ri-mail-line text-2xl text-blue-600"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">Comunicação</h3>
+                <p class="text-gray-600 text-sm">E-mail, chat, videoconferência e redes sociais</p>
+              </div>
+              <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-100">
+                <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+                  <i class="ri-task-line text-2xl text-green-600"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">Produtividade</h3>
+                <p class="text-gray-600 text-sm">Gestão de projetos, documentos e planilhas</p>
+              </div>
+              <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-100">
+                <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+                  <i class="ri-store-line text-2xl text-purple-600"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">E-commerce</h3>
+                <p class="text-gray-600 text-sm">Lojas online, pagamentos e gestão de vendas</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Fluxo de contato -->
+      <section class="py-24 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Fluxo de Contato</h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">Um processo simples e transparente para implementar automação na sua empresa</p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+            <!-- Etapas 1..5 -->
+            <div class="relative">
+              <div class="bg-white rounded-3xl p-8 shadow-lg border border-gray-100 text-center">
+                <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  <i class="ri-mail-send-line text-2xl text-white"></i>
+                </div>
+                <div class="w-8 h-8 bg-gray-900 text-white rounded-full flex items-center justify-center text-sm font-bold mx-auto mb-4">1</div>
+                <h3 class="text-lg font-bold text-gray-900 mb-3">Envie seus dados</h3>
+                <p class="text-gray-600 text-sm">Preencha o formulário com e-mail, empresa e telefone</p>
+              </div>
+              <div class="hidden lg:block absolute top-1/2 -right-4 -translate-y-1/2 z-10">
+                <i class="ri-arrow-right-line text-2xl text-gray-400"></i>
+              </div>
+            </div>
+
+            <div class="relative">
+              <div class="bg-white rounded-3xl p-8 shadow-lg border border-gray-100 text-center">
+                <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  <i class="ri-phone-line text-2xl text-white"></i>
+                </div>
+                <div class="w-8 h-8 bg-gray-900 text-white rounded-full flex items-center justify-center text-sm font-bold mx-auto mb-4">2</div>
+                <h3 class="text-lg font-bold text-gray-900 mb-3">Diagnóstico rápido</h3>
+                <p class="text-gray-600 text-sm">Nossa equipe entra em contato por e-mail/telefone</p>
+              </div>
+              <div class="hidden lg:block absolute top-1/2 -right-4 -translate-y-1/2 z-10">
+                <i class="ri-arrow-right-line text-2xl text-gray-400"></i>
+              </div>
+            </div>
+
+            <div class="relative">
+              <div class="bg-white rounded-3xl p-8 shadow-lg border border-gray-100 text-center">
+                <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-green-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  <i class="ri-file-text-line text-2xl text-white"></i>
+                </div>
+                <div class="w-8 h-8 bg-gray-900 text-white rounded-full flex items-center justify-center text-sm font-bold mx-auto mb-4">3</div>
+                <h3 class="text-lg font-bold text-gray-900 mb-3">Proposta personalizada</h3>
+                <p class="text-gray-600 text-sm">Receba um plano sob medida para sua empresa</p>
+              </div>
+              <div class="hidden lg:block absolute top-1/2 -right-4 -translate-y-1/2 z-10">
+                <i class="ri-arrow-right-line text-2xl text-gray-400"></i>
+              </div>
+            </div>
+
+            <div class="relative">
+              <div class="bg-white rounded-3xl p-8 shadow-lg border border-gray-100 text-center">
+                <div class="w-16 h-16 bg-gradient-to-r from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  <i class="ri-gift-line text-2xl text-white"></i>
+                </div>
+                <div class="w-8 h-8 bg-gray-900 text-white rounded-full flex items-center justify-center text-sm font-bold mx-auto mb-4">4</div>
+                <h3 class="text-lg font-bold text-gray-900 mb-3">Teste grátis por 15 dias</h3>
+                <p class="text-gray-600 text-sm">Experimente todas as funcionalidades sem compromisso</p>
+              </div>
+              <div class="hidden lg:block absolute top-1/2 -right-4 -translate-y-1/2 z-10">
+                <i class="ri-arrow-right-line text-2xl text-gray-400"></i>
+              </div>
+            </div>
+
+            <div class="relative">
+              <div class="bg-white rounded-3xl p-8 shadow-lg border border-gray-100 text-center">
+                <div class="w-16 h-16 bg-gradient-to-r from-red-500 to-red-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  <i class="ri-settings-3-line text-2xl text-white"></i>
+                </div>
+                <div class="w-8 h-8 bg-gray-900 text-white rounded-full flex items-center justify-center text-sm font-bold mx-auto mb-4">5</div>
+                <h3 class="text-lg font-bold text-gray-900 mb-3">Ajustes e ativação</h3>
+                <p class="text-gray-600 text-sm">Refinamos a solução e ativamos para uso completo</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="text-center mt-16">
+            <div class="bg-blue-50 rounded-2xl p-6 inline-block">
+              <p class="text-blue-800 font-semibold"><i class="ri-time-line mr-2"></i>Processo completo em até 7 dias úteis</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="faq" class="py-24 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Perguntas Frequentes</h2>
+            <p class="text-xl text-gray-600">Tire suas dúvidas sobre nossos serviços de automação e IA</p>
+          </div>
+
+          <div class="space-y-4">
+            <!-- item -->
+            <div class="bg-gray-50 rounded-2xl border border-gray-200 overflow-hidden">
+              <button class="faq-toggle w-full px-6 py-6 text-left flex items-center justify-between hover:bg-gray-100 focus:outline-none">
+                <span class="text-lg font-semibold text-gray-900 pr-4">Como vocês garantem a privacidade e segurança dos dados conforme a LGPD?</span>
+                <i class="ri-add-line text-xl text-gray-600 flex-shrink-0"></i>
+              </button>
+              <div class="faq-content hidden px-6 pb-6 text-gray-600">
+                Utilizamos criptografia, controles de acesso, auditoria e contratos de processamento de dados alinhados à LGPD.
+              </div>
+            </div>
+
+            <div class="bg-gray-50 rounded-2xl border border-gray-200 overflow-hidden">
+              <button class="faq-toggle w-full px-6 py-6 text-left flex items-center justify-between hover:bg-gray-100 focus:outline-none">
+                <span class="text-lg font-semibold text-gray-900 pr-4">Qual é o prazo de implantação das automações?</span>
+                <i class="ri-add-line text-xl text-gray-600 flex-shrink-0"></i>
+              </button>
+              <div class="faq-content hidden px-6 pb-6 text-gray-600">
+                Em média 1 a 2 semanas, variando conforme complexidade e integrações necessárias.
+              </div>
+            </div>
+
+            <div class="bg-gray-50 rounded-2xl border border-gray-200 overflow-hidden">
+              <button class="faq-toggle w-full px-6 py-6 text-left flex items-center justify-between hover:bg-gray-100 focus:outline-none">
+                <span class="text-lg font-semibold text-gray-900 pr-4">Que tipo de suporte recebo durante o período de teste?</span>
+                <i class="ri-add-line text-xl text-gray-600 flex-shrink-0"></i>
+              </button>
+              <div class="faq-content hidden px-6 pb-6 text-gray-600">
+                Acompanhamento por e-mail/telefone e ajustes rápidos de configuração.
+              </div>
+            </div>
+
+            <div class="bg-gray-50 rounded-2xl border border-gray-200 overflow-hidden">
+              <button class="faq-toggle w-full px-6 py-6 text-left flex items-center justify-between hover:bg-gray-100 focus:outline-none">
+                <span class="text-lg font-semibold text-gray-900 pr-4">Quais são as integrações mais comuns que vocês fazem?</span>
+                <i class="ri-add-line text-xl text-gray-600 flex-shrink-0"></i>
+              </button>
+              <div class="faq-content hidden px-6 pb-6 text-gray-600">
+                WhatsApp, Instagram, Facebook, Trello, Excel, Google, Notion e principais ferramentas de uso empresarial.
+              </div>
+            </div>
+
+            <div class="bg-gray-50 rounded-2xl border border-gray-200 overflow-hidden">
+              <button class="faq-toggle w-full px-6 py-6 text-left flex items-center justify-between hover:bg-gray-100 focus:outline-none">
+                <span class="text-lg font-semibold text-gray-900 pr-4">Posso cancelar o teste a qualquer momento?</span>
+                <i class="ri-add-line text-xl text-gray-600 flex-shrink-0"></i>
+              </button>
+              <div class="faq-content hidden px-6 pb-6 text-gray-600">
+                Sim, basta solicitar por e-mail que interrompemos o período de teste.
+              </div>
+            </div>
+
+            <div class="bg-gray-50 rounded-2xl border border-gray-200 overflow-hidden">
+              <button class="faq-toggle w-full px-6 py-6 text-left flex items-center justify-between hover:bg-gray-100 focus:outline-none">
+                <span class="text-lg font-semibold text-gray-900 pr-4">Como funciona a segurança das integrações e automações?</span>
+                <i class="ri-add-line text-xl text-gray-600 flex-shrink-0"></i>
+              </button>
+              <div class="faq-content hidden px-6 pb-6 text-gray-600">
+                Acesso mínimo necessário, tokens seguros, logs e monitoramento contínuo.
+              </div>
+            </div>
+
+            <div class="bg-gray-50 rounded-2xl border border-gray-200 overflow-hidden">
+              <button class="faq-toggle w-full px-6 py-6 text-left flex items-center justify-between hover:bg-gray-100 focus:outline-none">
+                <span class="text-lg font-semibold text-gray-900 pr-4">Vocês oferecem treinamento para nossa equipe?</span>
+                <i class="ri-add-line text-xl text-gray-600 flex-shrink-0"></i>
+              </button>
+              <div class="faq-content hidden px-6 pb-6 text-gray-600">
+                Sim, com materiais de apoio e sessões remotas para times chave.
+              </div>
+            </div>
+          </div>
+
+          <div class="text-center mt-12">
+            <p class="text-gray-600 mb-4">Não encontrou sua pergunta?</p>
+            <a href="#contato" class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700">
+              Entre em contato conosco<i class="ri-arrow-right-line ml-2"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA final -->
+      <section class="py-24 bg-gradient-to-br from-blue-600 to-purple-700">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">Pronto para automatizar?</h2>
+          <p class="text-xl text-blue-100 mb-12 max-w-2xl mx-auto">Comece hoje mesmo e veja como a automação pode transformar sua empresa</p>
+
+          <div class="bg-white rounded-3xl p-8 max-w-md mx-auto">
+            <form id="teste-gratis-acm" class="space-y-6">
+              <div>
+                <input id="email-final" name="email" type="email" required autocomplete="email"
+                       class="w-full px-4 py-3 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-sm"
+                       placeholder="Seu e-mail profissional">
+              </div>
+              <button type="submit"
+                      class="w-full px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-2xl hover:from-blue-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all">
+                <i class="ri-gift-line mr-2"></i>Ativar meus 15 dias grátis
+              </button>
+            </form>
+            <p class="text-xs text-gray-500 mt-4"><i class="ri-shield-check-line mr-1"></i>Sem cartão de crédito. Cancelamento a qualquer momento.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Rodapé -->
+      <footer id="contato" class="bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
+            <div class="lg:col-span-2">
+              <div class="flex items-center space-x-3 mb-6">
+
+                <div><span class="text-xl font-bold">ACM</span><span class="text-gray-400 ml-2">– Acutis Martech</span></div>
+              </div>
+              <p class="text-gray-400 mb-6">Automatizamos processos empresariais com inteligência artificial, liberando sua equipe para focar no que realmente importa.</p>
+              <div class="space-y-3">
+                <div class="flex items-center space-x-3">
+                  <i class="ri-mail-line text-blue-400"></i>
+                  <a href="mailto:contato@acutismartech.com.br" class="text-gray-400 hover:text-white">contato@acutismartech.com.br</a>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-lg font-semibold mb-4">Produto</h3>
+              <ul class="space-y-3">
+                <li><a href="#automacao" class="text-gray-400 hover:text-white">Automação</a></li>
+                <li><a href="#agentes-ia" class="text-gray-400 hover:text-white">Agentes IA</a></li>
+                <li><a href="#integracoes" class="text-gray-400 hover:text-white">Integrações</a></li>
+                <li><a href="#paineis" class="text-gray-400 hover:text-white">Painéis</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 class="text-lg font-semibold mb-4">Empresa</h3>
+              <ul class="space-y-3">
+                <li><a href="#sobre" class="text-gray-400 hover:text-white">Sobre nós</a></li>
+                <li><a href="#blog" class="text-gray-400 hover:text-white">Blog</a></li>
+                <li><a href="#carreiras" class="text-gray-400 hover:text-white">Carreiras</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 class="text-lg font-semibold mb-4">Recursos</h3>
+              <ul class="space-y-3">
+                <li><a href="#docs" class="text-gray-400 hover:text-white">Documentação</a></li>
+                <li><a href="#api" class="text-gray-400 hover:text-white">API</a></li>
+                <li><a href="#suporte" class="text-gray-400 hover:text-white">Suporte</a></li>
+                <li><a href="#status" class="text-gray-400 hover:text-white">Status</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 class="text-lg font-semibold mb-4">Jurídico</h3>
+              <ul class="space-y-3">
+                <li><a href="#lgpd" class="text-gray-400 hover:text-white">LGPD</a></li>
+                <li><a href="#termos" class="text-gray-400 hover:text-white">Termos de uso</a></li>
+                <li><a href="#privacidade" class="text-gray-400 hover:text-white">Política de privacidade</a></li>
+                <li><a href="#cookies" class="text-gray-400 hover:text-white">Cookies</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="border-t border-gray-800 mt-12 pt-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+              <div class="flex items-center gap-6">
+              </div>
+              <div class="flex items-center gap-6">
+                <p class="text-gray-400 text-sm">© 2025 ACM – Acutis Martech. Todos os direitos reservados.</p>
+              </div>
+              <div class="flex items-center gap-4">
+                <a href="https://www.instagram.com/acutis.martech/#" class="w-10 h-10 bg-gray-800 hover:bg-gray-700 rounded-lg flex items-center justify-center" aria-label="Instagram"><i class="ri-instagram-line text-gray-400 hover:text-white"></i></a>                
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+  </div>
+
+  <!-- JS: Menu mobile, máscara telefone, FAQ -->
+<script>
+  /* ===========================
+     CONFIG
+  ============================ */
+  const N8N_ENDPOINT = 'https://n8n-n8n.mpg2eg.easypanel.host/webhook/e3d48dc3-0a9a-434d-8bf5-0463b5fdd49e';
+  const API_KEY = ''; // opcional
+
+  /* ===========================
+     MENU MOBILE (drawer)
+  ============================ */
+  const drawer   = document.getElementById('mobile-drawer');
+  const btnOpen  = document.getElementById('btn-mobile-menu');
+  const btnClose = document.getElementById('btn-close-drawer');
+
+  function toggleDrawer(open) {
+    if (!drawer) return;
+    drawer.classList.toggle('open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+  if (btnOpen)  btnOpen.addEventListener('click', () => toggleDrawer(true));
+  if (btnClose) btnClose.addEventListener('click', () => toggleDrawer(false));
+  if (drawer) {
+    drawer.addEventListener('click', (e) => { if (e.target === drawer) toggleDrawer(false); });
+    drawer.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', () => toggleDrawer(false)));
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') toggleDrawer(false); });
+  }
+
+  /* ===========================
+     REMOVER CAMPO TELEFONE + WHATSAPP
+  ============================ */
+  (function removePhoneField() {
+    const phoneInput = document.getElementById('phone');
+    if (phoneInput) {
+      // remove o bloco do telefone (div pai imediato do input)
+      const phoneBlock = phoneInput.closest('div');
+      if (phoneBlock && phoneBlock.parentNode) phoneBlock.parentNode.removeChild(phoneBlock);
+    }
+    // remove também o checkbox "Este número é WhatsApp"
+    const whatsInput = document.getElementById('whatsapp');
+    if (whatsInput) {
+      const whatsBlock = whatsInput.closest('.flex');
+      if (whatsBlock && whatsBlock.parentNode) whatsBlock.parentNode.removeChild(whatsBlock);
+    }
+  })();
+
+  /* ===========================
+     HELPERS
+  ============================ */
+  function collectMeta() {
+    const p = new URLSearchParams(location.search);
+    return {
+      source: document.referrer || 'direct',
+      utm_source:  p.get('utm_source')  || '',
+      utm_medium:  p.get('utm_medium')  || '',
+      utm_campaign:p.get('utm_campaign')|| ''
+    };
+  }
+
+  // (mantido por segurança; inofensivo mesmo sem o campo)
+  function maskTel(value) {
+    return value
+      .replace(/\D/g, '')
+      .replace(/^(\d{2})(\d)/, '($1) $2')
+      .replace(/(\d{4,5})(\d{4})$/, '$1-$2')
+      .slice(0, 16);
+  }
+  const phoneInputForMask = document.getElementById('phone');
+  if (phoneInputForMask) {
+    phoneInputForMask.addEventListener('input', (e) => { e.target.value = maskTel(e.target.value); });
+  }
+
+  // FAQ (accordion)
+  document.querySelectorAll('.faq-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const content  = btn.parentElement.querySelector('.faq-content');
+      const icon     = btn.querySelector('i');
+      const isHidden = content.classList.contains('hidden');
+
+      document.querySelectorAll('.faq-content').forEach(c => c.classList.add('hidden'));
+      document.querySelectorAll('.faq-toggle i').forEach(i => { i.classList.remove('ri-subtract-line'); i.classList.add('ri-add-line'); });
+
+      if (isHidden) {
+        content.classList.remove('hidden');
+        icon.classList.remove('ri-add-line');
+        icon.classList.add('ri-subtract-line');
+      }
+    });
+  });
+
+  /* ===========================
+     ENVIOS PARA O N8N
+  ============================ */
+  async function submitToN8N(form, payload) {
+    const btn = form.querySelector('button[type="submit"]');
+    const original = btn ? btn.innerHTML : '';
+    if (btn) {
+      btn.disabled = true;
+      btn.innerHTML = '<i class="ri-loader-4-line animate-spin mr-2"></i>Enviando...';
+    }
+    try {
+      const headers = { 'Content-Type': 'application/json' };
+      if (API_KEY) headers['X-API-Key'] = API_KEY;
+
+      const res = await fetch(N8N_ENDPOINT, {
+        method: 'POST',
+        headers,
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error(`Falha no envio (${res.status})`);
+      await res.json().catch(() => ({}));
+
+      alert('Pronto! Enviamos seu cadastro. Em breve entraremos em contato por e-mail.');
+      form.reset();
+    } catch (err) {
+      console.error(err);
+      alert('Não foi possível enviar agora. Tente novamente em instantes.');
+    } finally {
+      if (btn) { btn.innerHTML = original; btn.disabled = false; }
+    }
+  }
+
+  // Form principal (plano personalizado) — sem telefone obrigatório
+  const leadForm = document.getElementById('plano-personalizado-acm');
+  if (leadForm) {
+    leadForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const meta = collectMeta();
+      const payload = {
+        email:    (leadForm.email?.value || '').trim(),
+        company:  (leadForm.company?.value || '').trim(),
+        phone:    '(não informado)',       // telefone removido
+        whatsapp: false,                   // sem telefone, não faz sentido marcar
+        consent:  !!leadForm.lgpd?.checked,
+        ...meta
+      };
+      if (!payload.email || !payload.company || !payload.consent) {
+        alert('Preencha e valide os campos obrigatórios (e-mail, empresa e consentimento).');
+        return;
+      }
+      submitToN8N(leadForm, payload);
+    });
+  }
+
+  // Form CTA final (somente e-mail) — inalterado
+  const trialForm = document.getElementById('teste-gratis-acm');
+  if (trialForm) {
+    trialForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const meta = collectMeta();
+      const email = (trialForm.email?.value || trialForm['email-final']?.value || '').trim();
+      if (!email) { alert('Informe seu e-mail.'); return; }
+      const payload = {
+        email,
+        company: '(não informado)',
+        phone:   '(não informado)',
+        whatsapp:false,
+        consent: true,
+        ...meta
+      };
+      submitToN8N(trialForm, payload);
+    });
+  }
+</script>
+
+
+</body>
+</html>
